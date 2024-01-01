@@ -9,22 +9,12 @@ export const AppDataSource = new DataSource({
    port: 3307,
    username: "root",
    password: "root",
-   database: "typeorm",
-   // entities: ["src/models/*.ts"],
+   database: "proyecto4_backend",
+   
    entities: [`${__dirname}/../models/**/*{.js,.ts}`],
-   // migrations: ["src/migrations/*.ts"],
+   
    migrations: [`${__dirname}/migrations/**/*{.js,.ts}`],
    synchronize: false,
    logging: false,
 });
 
-//  src/models/**/*.ts
-
-// - src
-//   - models
-//     - entity1.ts
-//     - entity2.ts
-//   - other
-//     - nested
-//       - models
-//         - entity3.ts
