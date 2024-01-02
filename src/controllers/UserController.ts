@@ -1,7 +1,7 @@
 import { Controller } from "./Controller";
 import { Request, Response } from "express";
 import { User } from "../models/User";
-import { AppDataSource } from "../database/data-source";
+import { AppDataSource } from "../data-source";
 
 // -----------------------------------------------------------------------------
 

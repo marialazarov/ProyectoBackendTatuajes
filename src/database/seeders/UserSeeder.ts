@@ -1,4 +1,4 @@
-import { AppDataSource } from "../data-source";
+import { AppDataSource } from "../../data-source";
 import { User } from "../../models/User";
 import { UserFactory } from "../factories/UserFactory";
 
