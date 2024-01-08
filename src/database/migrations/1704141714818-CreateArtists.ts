@@ -25,7 +25,7 @@ export class CreateArtists1704141714818 implements MigrationInterface {
                   name: "name",
                   type: "varchar",
                   length: "40",
-                  isUnique: true,
+                 
                 },
 
                 {
@@ -39,7 +39,7 @@ export class CreateArtists1704141714818 implements MigrationInterface {
                   name: "portfolio",
                   type: "varchar",
                   length: "100",
-                  isNullable: true
+                  
                 },
              
       

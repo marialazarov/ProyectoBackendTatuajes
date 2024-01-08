@@ -13,7 +13,7 @@ export class Designs {
   id!: number;
 
   @Column()
-  picture!: string;
+  pictures?: string;
 
   @Column()
   style!: string;

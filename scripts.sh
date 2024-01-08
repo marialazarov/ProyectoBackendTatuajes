@@ -62,3 +62,6 @@ npx typeorm-ts-node-commonjs migration:revert -d ./src/data-source.ts
 
 # Crear modelos
 npx typeorm entity:create ./src/models/User
+
+# Borrar base de datos
+npx typeorm-ts-node-commonjs schema:drop -d ./src/database/data-source.ts

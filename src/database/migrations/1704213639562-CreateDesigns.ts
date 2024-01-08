@@ -27,11 +27,13 @@ export class CreateDesigns1704213639562 implements MigrationInterface {
                   name: "style",
                   type: "varchar",
                   length:"40",
+
                 },
                 {
                     name: "pictures",
                     type: "varchar",
                     length:"40",
+                    isNullable: true
                   },
       
              
