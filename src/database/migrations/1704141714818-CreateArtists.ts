@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm"
 
 export class CreateArtists1704141714818 implements MigrationInterface {
+    static appointments: any;
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
