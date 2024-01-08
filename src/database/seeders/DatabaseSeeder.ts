@@ -1,5 +1,11 @@
-import { userSeeder } from "./UserSeeder";
+import { roleSeeder } from "./RoleSeeder";
 
 // -----------------------------------------------------------------------------
 
-userSeeder();
+
+(async () => {
+    await roleSeeder();
+
+})();
+
+

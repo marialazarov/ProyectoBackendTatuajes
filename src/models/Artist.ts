@@ -4,9 +4,11 @@ import {
   Column,
   ManyToMany,
   JoinTable,
-  Timestamp,
-  UpdateDateColumn,
+  CreateDateColumn, // Importa el decorador CreateDateColumn
+  UpdateDateColumn, // Importa el decorador UpdateDateColumn
+  ManyToOne,
   OneToMany,
+  JoinColumn,
 } from "typeorm";
 import { User } from "./User";
 import { Appointment } from "./Appointments";
@@ -23,10 +25,10 @@ export class Artist {
   @Column()
   portfolio!: string;
 
-  @CreatedDateColumn()
+  @CreateDateColumn() // Usa el decorador CreateDateColumn para createdAt
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn() // Usa el decorador UpdateDateColumn para updatedAt
   updatedAt!: Date;
 
   @ManyToOne(() => User, (user) => user.artists)
@@ -35,27 +37,7 @@ export class Artist {
 
   @OneToMany(() => Appointment, (appointment) => appointment.artist)
   appointments!: Appointment[];
-  
+
   @OneToMany(() => Designs, design => design.artist)
-designs!: Designs[];
-  
-}
-
-function CreatedDateColumn(): (
-  target: Artist,
-  propertyKey: "createdAt"
-) => void {
-  throw new Error("Function not implemented.");
-}
-function ManyToOne(
-  arg0: () => typeof User,
-  arg1: (user: any) => any
-): (target: Artist, propertyKey: "user") => void {
-  throw new Error("Function not implemented.");
-}
-
-function JoinColumn(arg0: {
-  name: string;
-}): (target: Artist, propertyKey: "user") => void {
-  throw new Error("Function not implemented.");
+  designs!: Designs[];
 }

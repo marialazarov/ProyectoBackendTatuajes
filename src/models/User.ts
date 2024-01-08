@@ -4,6 +4,8 @@ import {
   Column,
   ManyToMany,
   JoinTable,
+  CreateDateColumn, // Importa el decorador CreateDateColumn
+  UpdateDateColumn, // Importa el decorador UpdateDateColumn
   OneToMany,
 } from "typeorm";
 import { Role } from "./Role";
@@ -30,10 +32,10 @@ export class User {
   @Column()
   phone!: string;
 
-  @CreatedDateColumn()
+  @CreateDateColumn() // Usa el decorador CreateDateColumn para createdAt
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn() // Usa el decorador UpdateDateColumn para updatedAt
   updatedAt!: Date;
 
   @ManyToMany(() => Role, (role) => role.users)
@@ -45,12 +47,4 @@ export class User {
 
   @OneToMany(() => Appointment, (appointment) => appointment.user)
   appointments!: Appointment[];
-}
-
-function CreatedDateColumn(): (target: User, propertyKey: "createdAt") => void {
-  throw new Error("Function not implemented.");
-}
-
-function UpdateDateColumn(): (target: User, propertyKey: "updatedAt") => void {
-  throw new Error("Function not implemented.");
 }

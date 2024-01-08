@@ -1,4 +1,5 @@
 import "reflect-metadata";
+
 import { DataSource } from "typeorm";
 import { CreateAppointments1704211291667 } from "./database/migrations/1704211291667-CreateAppointments";
 import { CreateArtists1704141714818 } from "./database/migrations/1704141714818-CreateArtists";

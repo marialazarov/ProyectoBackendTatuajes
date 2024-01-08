@@ -3,8 +3,11 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
-  JoinTable,
+  JoinColumn,
+  CreateDateColumn, // Importa el decorador CreateDateColumn
+  UpdateDateColumn, // Importa el decorador UpdateDateColumn
 } from "typeorm";
+
 import { Artist } from "./Artist";
 
 @Entity()
@@ -18,32 +21,13 @@ export class Designs {
   @Column()
   style!: string;
 
-  @CreatedDateColumn()
+  @CreateDateColumn() 
   createdAt!: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn() 
   updatedAt!: Date;
 
   @ManyToOne(() => Artist, (artist) => artist.designs)
   @JoinColumn({ name: "artist_id" })
   artist!: Artist;
-}
-
-function CreatedDateColumn(): (
-  target: Designs,
-  propertyKey: "createdAt"
-) => void {
-  throw new Error("Function not implemented.");
-}
-
-function UpdateDateColumn(): (
-  target: Designs,
-  propertyKey: "updatedAt"
-) => void {
-  throw new Error("Function not implemented.");
-}
-function JoinColumn(arg0: {
-  name: string;
-}): (target: Designs, propertyKey: "artist") => void {
-  throw new Error("Function not implemented.");
 }
