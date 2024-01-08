@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { User } from "./User";
 import { Appointment } from "./Appointments";
+import { Designs } from "./Designs";
 
 @Entity()
 export class Artist {
@@ -34,7 +35,10 @@ export class Artist {
 
   @OneToMany(() => Appointment, (appointment) => appointment.artist)
   appointments!: Appointment[];
-  designs: any;
+  
+  @OneToMany(() => Designs, design => design.artist)
+designs!: Designs[];
+  
 }
 
 function CreatedDateColumn(): (
