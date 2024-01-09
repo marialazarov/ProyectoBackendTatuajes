@@ -4,8 +4,8 @@ import {
   Column,
   ManyToMany,
   JoinTable,
-  CreateDateColumn, // Importa el decorador CreateDateColumn
-  UpdateDateColumn, // Importa el decorador UpdateDateColumn
+  CreateDateColumn, 
+  UpdateDateColumn, 
 } from "typeorm";
 import { User } from "./User";
 

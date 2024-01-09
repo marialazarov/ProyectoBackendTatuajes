@@ -1,6 +1,7 @@
 import { AppDataSource } from "../../data-source";
 import { Role } from "../../models/Role";
 
+
 export const roleSeeder = async () => {
   try {
     await AppDataSource.initialize();
