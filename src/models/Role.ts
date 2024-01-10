@@ -23,7 +23,7 @@ export class Role {
   @UpdateDateColumn() // Usa el decorador UpdateDateColumn para updatedAt
   updatedAt!: Date;
 
-  @ManyToMany(() => User, (user) => user.roles)
+  @ManyToMany(() => User, (user) => user.role)
   @JoinTable()
   users?: User[];
 }

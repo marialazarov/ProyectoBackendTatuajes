@@ -10,7 +10,7 @@ export class CreateUsers1704136987986 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "users",
+        name: "user",
         columns: [
           {
             name: "id",
@@ -77,17 +77,17 @@ export class CreateUsers1704136987986 implements MigrationInterface {
       true
     );
     await queryRunner.createForeignKey(
-      "users",
+      "user",
       new TableForeignKey({
         columnNames: ["role_id"],
         referencedColumnNames: ["id"],
-        referencedTableName: "roles",
+        referencedTableName: "role",
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("user");
   }
 }
 function down(queryRunner: any, QueryRunner: any) {

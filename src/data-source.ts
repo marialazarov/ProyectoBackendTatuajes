@@ -25,7 +25,7 @@ export const AppDataSource = new DataSource({
    entities: [Role,User,Appointment,Designs,Artist],
    
    migrations: [CreateAppointments1704211291667,CreateArtists1704141714818,CreateUsers1704136987986,CreateRoles1704132281137, CreateDesigns1704213639562],
-   synchronize: false,
+   synchronize:false,
    logging: false,
 });
 

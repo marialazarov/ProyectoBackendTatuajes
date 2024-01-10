@@ -60,7 +60,7 @@ export class CreateDesigns1704213639562 implements MigrationInterface {
             new TableForeignKey({
                 columnNames: ["artist_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "artists",
+                referencedTableName: "artist",
             })
         );
     

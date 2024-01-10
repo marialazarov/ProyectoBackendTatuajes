@@ -40,12 +40,12 @@ import {
   
     @ManyToMany(() => Role, (role) => role.users)
     @JoinTable({ name: "user_roles" })
-    roles!: Role[];
+    role!: Role[];
   
-    @OneToMany(() => Artist, (artist) => artist.user)
+    @OneToMany(() => Artist, (artists) => artists.user)
     artists!: Artist[];
   
-    @OneToMany(() => Appointment, (appointment) => appointment.user)
+    @OneToMany(() => Appointment, (appointments) => appointments.user)
     appointments!: Appointment[];
   }
   

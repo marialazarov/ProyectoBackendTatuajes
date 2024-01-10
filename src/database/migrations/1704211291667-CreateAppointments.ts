@@ -61,7 +61,7 @@ export class CreateAppointments1704211291667 implements MigrationInterface {
             new TableForeignKey({
               columnNames: ["user_id"],
               referencedColumnNames: ["id"],
-              referencedTableName: "users",
+              referencedTableName: "user",
             })
           );
           await queryRunner.createForeignKey(
@@ -69,7 +69,7 @@ export class CreateAppointments1704211291667 implements MigrationInterface {
             new TableForeignKey({
                 columnNames: ["artist_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "artists",
+                referencedTableName: "artist",
             })
         );
     }
