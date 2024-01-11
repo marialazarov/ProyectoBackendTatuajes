@@ -51,7 +51,7 @@ npx tsc --init
 
 
 # Crear migraciones en TypeORM manualmente
-npx typeorm migration:create ./src/migrations/CreateDesigns
+npx typeorm migration:create ./src/migrations/CreateUserRole
 
 # Ejecutar migraciones en TypeORM 
 npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts 

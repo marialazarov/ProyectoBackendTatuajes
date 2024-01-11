@@ -12,6 +12,7 @@ import { CreateArtists1704141714818 } from "./database/migrations/1704141714818-
 import { CreateUsers1704136987986 } from "./database/migrations/1704136987986-CreateUsers";
 import { CreateRoles1704132281137 } from "./database/migrations/1704132281137-CreateRoles";
 import { CreateDesigns1704213639562 } from "./database/migrations/1704213639562-CreateDesigns";
+import { CreateUsersRoles1704837126641 } from "./database/migrations/1705004483208-CreateUserRole";
 // -----------------------------------------------------------------------------
 
 export const AppDataSource = new DataSource({
@@ -24,7 +25,7 @@ export const AppDataSource = new DataSource({
    
    entities: [Role,User,Appointment,Designs,Artist],
    
-   migrations: [CreateAppointments1704211291667,CreateArtists1704141714818,CreateUsers1704136987986,CreateRoles1704132281137, CreateDesigns1704213639562],
+   migrations: [CreateAppointments1704211291667,CreateArtists1704141714818,CreateUsers1704136987986,CreateRoles1704132281137, CreateDesigns1704213639562 , CreateUsersRoles1704837126641],
    synchronize:false,
    logging: false,
 });

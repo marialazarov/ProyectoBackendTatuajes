@@ -19,17 +19,14 @@ export class CreateUsers1704136987986 implements MigrationInterface {
             isGenerated: true,
             generationStrategy: "increment",
           },
-          {
-            name: "role_id",
-            type: "int",
-            isPrimary: false,
-          },
+      
 
           {
             name: "username",
             type: "varchar",
             length: "40",
             isUnique: true,
+           
           },
           {
             name: "name",
@@ -43,7 +40,7 @@ export class CreateUsers1704136987986 implements MigrationInterface {
           },
 
           {
-            name: "password",
+            name: "password_hash",
             type: "varchar",
             length: "255",
           },
@@ -76,16 +73,8 @@ export class CreateUsers1704136987986 implements MigrationInterface {
       }),
       true
     );
-    await queryRunner.createForeignKey(
-      "user",
-      new TableForeignKey({
-        columnNames: ["role_id"],
-        referencedColumnNames: ["id"],
-        referencedTableName: "role",
-      })
-    );
-  }
 
+    }
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable("user");
   }

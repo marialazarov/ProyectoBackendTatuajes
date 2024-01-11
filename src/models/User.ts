@@ -19,12 +19,15 @@ import {
   
     @Column()
     name!: string;
+    
+    @Column()
+    username!:string;
   
     @Column()
     surname!: string;
   
     @Column()
-    password!: string;
+    password_hash!: string;
   
     @Column()
     email!: string;
@@ -38,14 +41,26 @@ import {
     @UpdateDateColumn() // Usa el decorador UpdateDateColumn para updatedAt
     updatedAt!: Date;
   
-    @ManyToMany(() => Role, (role) => role.users)
-    @JoinTable({ name: "user_roles" })
-    role!: Role[];
+    @ManyToMany(() => Role, (role) => role.user)
+    @JoinTable({
+       name: "user_role",
+       joinColumn: {
+          name: "user_id",
+          referencedColumnName: "id",
+       },
+       inverseJoinColumn: {
+          name: "role_id",
+          referencedColumnName: "id",
+       },
+    })
+    roles!: Role[];
   
     @OneToMany(() => Artist, (artists) => artists.user)
     artists!: Artist[];
   
     @OneToMany(() => Appointment, (appointments) => appointments.user)
     appointments!: Appointment[];
+   
+   
   }
   
