@@ -12,7 +12,7 @@ export const roleSeeder = async () => {
     adminRole.name = "admin";
 
     const artistRole = new Role();
-    artistRole.name = "artist";
+    artistRole.name = "super_admin";
 
     const clientRole = new Role();
     clientRole.name = "client";
