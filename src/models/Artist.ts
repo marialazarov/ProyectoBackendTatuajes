@@ -22,10 +22,7 @@ import {
     @Column()
     name!: string;
 
-    @Column()
-    surname!:string;
-  
-  
+
     @Column()
     portfolio!: string;
   
@@ -37,7 +34,7 @@ import {
   
     @ManyToOne(() => User, (user) => user.artists)
     @JoinColumn({ name: "user_id" })
-    user!: User[];
+    user!: User;
   
     @OneToMany(() => Appointment, (appointment) => appointment.artist)
     appointments!: Appointment[];

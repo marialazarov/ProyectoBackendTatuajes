@@ -11,6 +11,7 @@ export const artistSeeder = async () => {
 
     const artistRespository = AppDataSource.getRepository(Artist);
     const artistFactory = new ArtistFactory(artistRespository);
+
     const count = 10
 
    const users = await createUserWithRoles({
@@ -21,12 +22,14 @@ export const artistSeeder = async () => {
 
 
     const artist = artistFactory.createMany(count)
-    artist.forEach((artists,index)=> artist.user = users[index])
+    artist.forEach((artist,index)=> artist.user = users[index])
+
+    await artistRespository.save(artist);
 
     
 
 
-    console.log("Seeding users completed succesfully");
+    console.log("Seeding artists completed succesfully!");
   } catch (error) {
     console.error("Error seeding the database", error);
   } finally {

@@ -8,7 +8,7 @@ import { artistSeeder } from "./ArtistSeeder";
 (async () => {
     await roleSeeder();
     await userSeeder();
-     await artistSeeder();
+    await artistSeeder();
 
 })();
 
