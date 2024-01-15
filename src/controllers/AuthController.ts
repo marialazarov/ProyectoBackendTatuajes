@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { CreateUserRequestBody } from "../types/types";
+import { CreateUserRequestBody, TokenData } from "../types/types";
 import { User } from "../models/User";
 import bcrypt from "bcrypt";
 import { UserRoles } from "../constants/UserRoles";
 import { AppDataSource } from "../data-source";
 import { Artist } from "../models/Artist";
 import { StatusCodes } from "http-status-codes";
+import jwt from "jsonwebtoken";
 
 //-----------
 export class AuthController {
@@ -70,6 +71,16 @@ export class AuthController {
         where: {
           email: email,
         },
+
+        //Para que salga el rol del usuario tambien
+        relations: {
+          roles: true,
+        },
+        select: {
+          roles: {
+            name: true,
+          },
+        },
       });
 
       //Verificar usuario inexistente
@@ -88,12 +99,22 @@ export class AuthController {
       }
 
       //Generar token
+      const roles = user.roles.map((role) => role.name)
+
+      const tokenPayLoad: TokenData = {
+      userId: user.id?.toString() as string,
+       userRoles: roles,
+
+       };
+
+       const token = jwt.sign(tokenPayLoad, '123', {
+        expiresIn: '3h',
+       });
 
 
       res.status(StatusCodes.OK).json({
         message: "Login succesfully!",
-        user:user, // BoRRAR
-
+        token, 
       });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
