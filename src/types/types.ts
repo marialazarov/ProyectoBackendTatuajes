@@ -10,3 +10,11 @@ export interface CreateUserRequestBody{
 
 }
 
+export interface LoginUserRequestBody{
+  
+    password: string;
+    email:string;
+ 
+
+}
+
