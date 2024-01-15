@@ -15,7 +15,7 @@ import {
   @Entity()
   export class User {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
   
     @Column()
     name!: string;
@@ -36,10 +36,10 @@ import {
     phone!: string;
   
     @CreateDateColumn() // Usa el decorador CreateDateColumn para createdAt
-    createdAt!: Date;
+    createdAt?: Date;
   
     @UpdateDateColumn() // Usa el decorador UpdateDateColumn para updatedAt
-    updatedAt!: Date;
+    updatedAt?: Date;
   
     @ManyToMany(() => Role, (role) => role.user)
     @JoinTable({
@@ -56,10 +56,10 @@ import {
     roles!: Role[];
   
     @OneToMany(() => Artist, (artists) => artists.user)
-    artists!: Artist[];
+    artists?: Artist[];
   
     @OneToMany(() => Appointment, (appointments) => appointments.user)
-    appointments!: Appointment[];
+    clientappointments?: Appointment[];
    
    
   }

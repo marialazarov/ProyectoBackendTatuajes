@@ -26,10 +26,10 @@ import {
     @Column()
     portfolio!: string;
   
-    @CreateDateColumn() // Usa el decorador CreateDateColumn para createdAt
+    @CreateDateColumn() 
     createdAt!: Date;
   
-    @UpdateDateColumn() // Usa el decorador UpdateDateColumn para updatedAt
+    @UpdateDateColumn() 
     updatedAt!: Date;
   
     @ManyToOne(() => User, (user) => user.artists)

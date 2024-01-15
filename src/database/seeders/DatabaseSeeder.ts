@@ -2,6 +2,7 @@ import { roleSeeder } from "./RoleSeeder";
 import { userSeeder } from "./UserSeeder";
 import { artistSeeder } from "./ArtistSeeder";
 
+
 // -----------------------------------------------------------------------------
 
 
@@ -9,6 +10,7 @@ import { artistSeeder } from "./ArtistSeeder";
     await roleSeeder();
     await userSeeder();
     await artistSeeder();
+
 
 })();
 

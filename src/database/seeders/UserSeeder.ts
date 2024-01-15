@@ -8,7 +8,7 @@ export const userSeeder = async () => {
     await AppDataSource.initialize();
 
 
-    const count = 3
+    const count = 10
 
     await createUserWithRoles({
       roles: [{id:2, name:"client"} as Role],

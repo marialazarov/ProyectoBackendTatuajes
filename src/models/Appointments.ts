@@ -17,7 +17,7 @@ import {
     id!: number;
   
     @Column()
-    date!: Date;
+    date!: string;
   
     @Column()
     hour!: string;
@@ -28,7 +28,7 @@ import {
     @UpdateDateColumn()
     updatedAt!: Date;
   
-    @ManyToOne(() => User, (user) => user.appointments)
+    @ManyToOne(() => User, (user) => user.clientappointments)
     @JoinColumn({ name: "user_id" })
     user!: User;
   
