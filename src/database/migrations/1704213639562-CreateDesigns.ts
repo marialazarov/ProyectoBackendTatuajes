@@ -19,6 +19,7 @@ export class CreateDesigns1704213639562 implements MigrationInterface {
                     name: "artist_id",
                     type: "int",
                     isPrimary: false,
+                    
                   },
       
             

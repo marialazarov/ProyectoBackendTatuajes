@@ -2,7 +2,10 @@ import { Controller } from "./Controller";
 import { Request, Response } from "express";
 import { User } from "../models/User";
 import { AppDataSource } from "../data-source";
-
+import { CreateUserRequestBody } from "../types/types";
+import { StatusCodes } from "http-status-codes";
+import { UserRoles } from "../constants/UserRoles";
+import bcrypt from "bcrypt"
 // -----------------------------------------------------------------------------
 
 export class UserController implements Controller {
@@ -62,16 +65,37 @@ export class UserController implements Controller {
     }
   }
 
-  async create(req: Request, res: Response): Promise<void | Response<any>> {
-    try {
-      const data = req.body;
+  async create(
+   req: Request<{}, {}, CreateUserRequestBody>,
+   res: Response
+): Promise<void | Response<any>> {
+   const { username, name, surname , password, email } = req.body;
 
-      const userRepository = AppDataSource.getRepository(User);
-      const newUser = await userRepository.save(data);
-      res.status(201).json(newUser);
-    } catch (error) {
+   const userRepository = AppDataSource.getRepository(User);
+   
+   
+   
+ 
+      try {
+         //Crear un nuevo usuario
+         const newUser: User = {
+           username,
+           email,
+           name,
+           surname,
+           password_hash: bcrypt.hashSync(password, 10),
+           roles: [UserRoles.CLIENT],
+         };
+
+   await userRepository.save(newUser);
+
+      res.status(StatusCodes.CREATED).json({
+         messagee: "User created succesfully!",
+      });
+    } catch (error:any) {
       res.status(500).json({
-        message: "Error while creating user",
+         message: "Error while creating User",
+         error: error.message,
       });
     }
   }
@@ -103,9 +127,10 @@ export class UserController implements Controller {
       res.status(200).json({
         message: "User deleted successfully",
       });
-    } catch (error) {
+    } catch (error:any) {
       res.status(500).json({
         message: "Error while deleting user",
+        error: error.message,
       });
     }
   }

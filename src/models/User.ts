@@ -33,7 +33,7 @@ import {
     email!: string;
   
     @Column()
-    phone!: string;
+    phone?: string;
   
     @CreateDateColumn() // Usa el decorador CreateDateColumn para createdAt
     createdAt?: Date;
