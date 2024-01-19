@@ -24,7 +24,7 @@ import {
 
 
     @Column()
-    portfolio!: string;
+    portfolio?: string;
   
     @CreateDateColumn() 
     createdAt!: Date;
