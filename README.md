@@ -119,7 +119,9 @@ Dependiendo de si eres admin o no puedes acceder a según qué endpoint.
     
 - CITAS
      - CREACIÓN DE CITAS
-        POST http://localhost:3000/api/appointments
+       
+       
+            POST http://localhost:3000/api/appointments
 
 
     body:
@@ -134,17 +136,19 @@ Dependiendo de si eres admin o no puedes acceder a según qué endpoint.
     ```
     - EDITAR CITAS
        
-        PATCH http://localhost:3000/api/appointments/:id
+            PATCH http://localhost:3000/api/appointments/:id
 
     - ELIMINACIÓN DE CITAS
         
-        DELETE http://localhost:3000/api/appointments/:id
+            DELETE http://localhost:3000/api/appointments/:id
 
     - VER TODAS LAS CITAS COMO CLIENTE
-          GET http://localhost:3000/api/appointments/:id
+            
+            GET http://localhost:3000/api/appointments/:id
    
     - VER TODAS LAS CITAS COMO TATUADOR
-        GET http://localhost:3000/api/appointments/miscitas/:id
+        
+            GET http://localhost:3000/api/appointments/miscitas/:id
      
 
   </details>
