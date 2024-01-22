@@ -68,17 +68,29 @@ export class ArtistController implements Controller {
           roles: [UserRoles.ADMIN],
         };
         await userRepository.save(newUser);
-   
-        res.status(201).json("Artist created succesfully!"); 
-      } catch (error: any) { 
-        console.error("Error while creating artist:", error); 
-        res.status(500).json({ 
-          message: "Error while creating artis", 
-          error: error.message, 
+     //Crear nuevo artista asociado al usuario
+        
+     if (newUser.roles.includes(UserRoles.ADMIN)) { 
+        // Si es un artista, también crea una entrada en la tabla de artistas. 
+        const artistRepository = AppDataSource.getRepository(Artist); 
+        const newArtist = artistRepository.create({ 
+          user_id: newUser.id, // Asocia el nuevo artista con el usuario recién creado. 
+          portfolio: "https://"
         }); 
-      } 
-    }
    
+        await artistRepository.save(newArtist); 
+      } 
+   
+      res.status(201).json("Artist succesfully created!"); 
+    } catch (error: any) { 
+      console.error("Error while creating artist:", error); 
+      res.status(500).json({ 
+        message: "Error while creating artis", 
+        error: error.message, 
+      }); 
+    } 
+  }
+ 
     
 
    async update(req: Request, res: Response): Promise<void | Response<any>> {

@@ -9,16 +9,20 @@ import {
     ManyToOne,
     OneToMany,
     JoinColumn,
+    OneToOne,
   } from "typeorm";
   import { User } from "./User";
   import { Appointment } from "./Appointments";
   import { Designs } from "./Designs";
   
-  @Entity()
+  @Entity("artist")
   export class Artist {
     @PrimaryGeneratedColumn()
     id!: number;
   
+    @Column()
+    user_id!: number;
+
     @Column()
     name!: string;
 
@@ -32,12 +36,12 @@ import {
     @UpdateDateColumn() 
     updatedAt!: Date;
   
-    @ManyToOne(() => User, (user) => user.artists)
+    @OneToOne(() => User, (user) => user.artists)
     @JoinColumn({ name: "user_id" })
     user!: User;
   
     @OneToMany(() => Appointment, (appointment) => appointment.artist)
-    appointments!: Appointment[];
+    artistappointments!: Appointment[];
   
     @OneToMany(() => Designs, design => design.artist)
     designs!: Designs[];

@@ -17,19 +17,20 @@ export class CreateAppointments1704211291667 implements MigrationInterface {
                 {
                   name: "user_id",
                   type: "int",
-                  isPrimary: false,
+    
+                  isNullable: true
                   
                 },
                 {
                     name: "artist_id",
                     type: "int",
-                    isPrimary: false,
-                    
+                  
+                    isNullable: true
                   },
       
                 {
                   name: "date",
-                  type: "date",
+                  type: "varchar",
                   isUnique: true,
                 },
 
@@ -55,26 +56,25 @@ export class CreateAppointments1704211291667 implements MigrationInterface {
                   isNullable: false,
                 },
               ],
-            }),
-            true
-        );
-        await queryRunner.createForeignKey(
-            "appointments",
-            new TableForeignKey({
-              columnNames: ["user_id"],
-              referencedColumnNames: ["id"],
-              referencedTableName: "user",
-            })
+              foreignKeys: [
+                {
+                 columnNames: ["user_id"],
+                 referencedTableName: "user",
+                 referencedColumnNames: ["id"],
+                 onDelete: "CASCADE",
+                },
+                {
+                 columnNames: ["artist_id"],
+                 referencedTableName: "artist",
+                 referencedColumnNames: ["id"],
+                 onDelete: "CASCADE",
+                },
+             ],
+             }),
+             true
           );
-          await queryRunner.createForeignKey(
-            "appointments",
-            new TableForeignKey({
-                columnNames: ["artist_id"],
-                referencedColumnNames: ["id"],
-                referencedTableName: "artist",
-            })
-        );
-    }
+     }
+ 
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("appointments");

@@ -18,7 +18,7 @@ export class CreateArtists1704141714818 implements MigrationInterface {
                 {
                   name: "user_id",
                   type: "int",
-                  isPrimary: false,
+                  isPrimary: true,
                 },
       
                 {
@@ -51,19 +51,19 @@ export class CreateArtists1704141714818 implements MigrationInterface {
                   isNullable: false,
                 },
               ],
-            }),
-            true
-          );
-          await queryRunner.createForeignKey(
-            "artist",
-            new TableForeignKey({
-              columnNames: ["user_id"],
-              referencedColumnNames: ["id"],
-              referencedTableName: "user",
-              onDelete:"CASCADE"
-            })
-          );
-    }
+            
+            foreignKeys: [
+            {
+             columnNames: ["user_id"],
+             referencedTableName: "user",
+             referencedColumnNames: ["id"],
+             onDelete: "CASCADE", // when user is deleted, artist related to this
+            },
+         ],
+         }),
+         true
+      );
+ }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("artist");

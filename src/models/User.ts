@@ -7,6 +7,7 @@ import {
     CreateDateColumn, 
     UpdateDateColumn, 
     OneToMany,
+    OneToOne,
   } from "typeorm";
   import { Role } from "./Role";
   import { Artist } from "./Artist";
@@ -55,8 +56,8 @@ import {
     })
     roles!: Role[];
   
-    @OneToMany(() => Artist, (artists) => artists.user)
-    artists?: Artist[];
+    @OneToOne(() => Artist, (artists) => artists.user)
+    artists?: Artist;
   
     @OneToMany(() => Appointment, (appointments) => appointments.user)
     clientappointments?: Appointment[];

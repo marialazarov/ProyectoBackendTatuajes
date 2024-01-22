@@ -11,10 +11,16 @@ import {
   import { User } from "./User";
   import { Artist } from "./Artist";
   
-  @Entity()
+  @Entity("appointments")
   export class Appointment {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
+
+    @Column()
+    user_id!: number;
+
+    @Column()
+    artist_id!: number;
   
     @Column()
     date!: string;
@@ -23,17 +29,17 @@ import {
     hour!: string;
   
     @CreateDateColumn()
-    createdAt!: Date;
+    createdAt?: Date;
   
     @UpdateDateColumn()
-    updatedAt!: Date;
+    updatedAt?: Date;
   
     @ManyToOne(() => User, (user) => user.clientappointments)
     @JoinColumn({ name: "user_id" })
-    user!: User;
+    user?: User;
   
-    @ManyToOne(() => Artist, (artist) => artist.appointments)
-    @JoinColumn({ name: "artist_id" })
-    artist!: Artist;
+    @ManyToOne(() => Artist, (artist) => artist.user)
+    @JoinColumn ({name: "artist_id", referencedColumnName:"id"})
+    artist?: Artist;
   }
   

@@ -12,7 +12,7 @@ export const artistSeeder = async () => {
     const artistRespository = AppDataSource.getRepository(Artist);
     const artistFactory = new ArtistFactory(artistRespository);
 
-    const count = 10
+    const count = 5
 
    const users = await createUserWithRoles({
       roles: [{id:1, name:"admin"} as Role],
