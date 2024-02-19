@@ -6,33 +6,46 @@ import { CreateUserRequestBody } from "../types/types";
 import { StatusCodes } from "http-status-codes";
 import { UserRoles } from "../constants/UserRoles";
 import bcrypt from "bcrypt"
+import { Filter } from "typeorm";
 // -----------------------------------------------------------------------------
 
 export class UserController implements Controller {
   async getAll(req: Request, res: Response): Promise<void | Response<any>> {
     try {
       const userRepository = AppDataSource.getRepository(User);
-      let { page, skip } = req.query;
-      //Paginación
-      let currentPage = page ? +page : 1;
-      let itemsPerPage = skip ? +skip : 10;
 
-      const [allUsers, count] = await userRepository.findAndCount({
-        skip: (currentPage - 1) * itemsPerPage,
-        take: itemsPerPage,
-       // en postman "/api/users?page=2&skip=5"  o según lo que quiera
-       
-       
-       //Aqui pongo que campos quiero mostrar cuando obtengo los usuarios
+      const page = !req.query.page ? Number(req.query.page) : null;
+      const limit = req.query.limit ? Number(req.query.limit) : null;
+
+      interface filter {
+        [key: string]: any;
+      }
+
+
+      const filter: filter = {
         select: {
           username: true,
           email: true,
           id: true,
         },
-      });
+      };
+      if (page && limit) {
+        filter.skip = ((page - 1) * limit)
+      }
+      if(limit){
+        filter.take = (limit)
+      }
+
+
+      //Paginación
+      //let currentPage = page ? +page : 1;
+      //let itemsPerPage = limit ? +limit : 5;
+
+      const [allUsers, count] = await userRepository.findAndCount(filter);
       res.status(200).json({
         count,
-       
+        limit,
+        page,
         results: allUsers,
       });
     } catch (error) {
