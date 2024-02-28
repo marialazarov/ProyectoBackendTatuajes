@@ -104,6 +104,12 @@ export class AuthController {
       const tokenPayLoad: TokenData = {
       userId: user.id?.toString() as string,
        userRoles: roles,
+       username: user.username,
+       name:user.name,
+       surname:user.surname,
+       email:user.email,
+       phone: user.phone,
+
 
        };
 

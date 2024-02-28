@@ -29,6 +29,9 @@ import {
 
     @Column()
     portfolio?: string;
+
+    @Column()
+    img?: string;
   
     @CreateDateColumn() 
     createdAt!: Date;

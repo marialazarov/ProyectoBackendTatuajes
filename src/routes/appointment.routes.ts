@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { AppointmentController } from "../controllers/AppointmentController";
 import { auth } from "../middlewares/auth";
 import { isAdmin } from "../middlewares/isAdmin";

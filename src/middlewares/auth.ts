@@ -23,6 +23,13 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
     const decodedPayload: TokenData = {
         userId: decoded.userId,
         userRoles: decoded.userRoles,
+      name: decoded.name,
+      surname:decoded.surname,
+      username:decoded.username,
+      email: decoded.email,
+      phone: decoded.phone
+      
+        
      };
 
      req.tokenData = decodedPayload;

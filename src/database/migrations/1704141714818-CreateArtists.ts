@@ -37,6 +37,12 @@ export class CreateArtists1704141714818 implements MigrationInterface {
                   
                 },
              
+                {
+                  name: "img",
+                  type: "varchar",
+                  length: "100",
+                  
+                },
       
                 {
                   name: "createdAt",

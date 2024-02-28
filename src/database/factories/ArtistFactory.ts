@@ -10,6 +10,7 @@ export class ArtistFactory extends BaseFactory<Artist> {
         artist.portfolio = faker.image.urlLoremFlickr(), faker.image.urlLoremFlickr(), faker.image.urlLoremFlickr(); // 'https://loremflickr.com/640/480?lock=1234']
         artist.createdAt = new Date ();
         artist.updatedAt = new Date ();
+        artist.img = faker.image.urlPicsumPhotos();
      
     
     

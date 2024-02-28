@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { UserController } from "../controllers/UserController";
 import { sampleMiddleware } from "../middlewares/sampleMiddleware";
 import { auth } from "../middlewares/auth";
@@ -11,7 +12,7 @@ const userController = new UserController();
 
 
 
-router.get("/", auth, isAdmin, sampleMiddleware, userController.getAll);
+router.get("/", userController.getAll); // router.get("/", auth, isAdmin, sampleMiddleware, userController.getAll);
 router.get("/:id", auth, userController.getById);
 router.post("/",userController.create);
 router.patch("/:id", auth, isAdmin, userController.update);

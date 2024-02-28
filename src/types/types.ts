@@ -30,7 +30,12 @@ export interface LoginUserRequestBody{
 
 export interface TokenData {
     userId: string,
-    userRoles: string[]
+    userRoles: string[],
+    name: string,
+    username:string,
+    surname:string,
+    email: string,
+    phone?: string
 }
 
 export interface CreateAppointmentsRequestBody {
