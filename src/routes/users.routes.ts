@@ -12,8 +12,8 @@ const userController = new UserController();
 
 
 
-router.get("/", userController.getAll); // router.get("/", auth, isAdmin, sampleMiddleware, userController.getAll);
-router.get("/:id", auth, userController.getById);
+router.get("/", auth,  userController.getAll); // router.get("/", auth, isAdmin, sampleMiddleware, userController.getAll);
+router.get("/:id", userController.getById);
 router.post("/",userController.create);
 router.patch("/:id", auth, isAdmin, userController.update);
 router.delete("/:id", auth, isAdmin, userController.delete);

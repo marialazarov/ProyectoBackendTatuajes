@@ -21,6 +21,7 @@ import {
 
     @Column()
     artist_id!: number;
+
   
     @Column()
     date!: string;

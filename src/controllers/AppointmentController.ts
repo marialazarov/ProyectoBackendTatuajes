@@ -42,28 +42,27 @@ export class AppointmentController implements Controller {
          });
       }
    }
-
    async getById(req: Request, res: Response): Promise<void | Response<any>> {
       try {
-         const id = +req.params.id;
-         const appointmentRepository = AppDataSource.getRepository(Appointment);
-         const appointments = await appointmentRepository.findOneBy({
-            id: id,
-         });
-
-         if (!appointments) {
-            return res.status(404).json({
-               message: "Appointment not found",
-            });
-         }
-
-         res.status(200).json(appointments);
+          const id = +req.params.id; // Obtén el ID del usuario de la URL
+          const appointmentRepository = AppDataSource.getRepository(Appointment);
+          const appointments = await appointmentRepository.findBy({
+              user_id: id, // Utiliza el ID del usuario para buscar sus appointments
+          });
+  
+          if (!appointments) {
+              return res.status(404).json({
+                  message: "Appointment not found",
+              });
+          }
+  
+          res.status(200).json(appointments);
       } catch (error) {
-         res.status(500).json({
-            message: "Error while getting appointments",
-         });
+          res.status(500).json({
+              message: "Error while getting appointments",
+          });
       }
-   }
+  }
    async getByArtistId(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;
